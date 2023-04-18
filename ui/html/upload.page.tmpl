@@ -1,0 +1,17 @@
+{{template "base" .}}
+{{define "title"}}Upload{{end}}
+{{define "main"}}
+Only .JPEG format supported
+<form enctype='multipart/form-data' action='/recognition' method='POST' novalidate>
+    <input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+    <input type='file' name='myFile' />
+    <input type='submit' value='upload' />
+</form>
+<br>
+<h1><center>Most Recent Face</center></h1>
+<br>
+{{ if .IsAuthenticated}}
+<center><img src='./test/test.jpeg' width='500' height='500'></center>
+{{else}}<center>LOGIN TO VIEW !!</center>{{end}}
+
+{{end}}

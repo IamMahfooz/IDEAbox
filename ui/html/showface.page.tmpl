@@ -1,0 +1,25 @@
+{{template "base" .}}
+{{define "title"}}User Profile{{end}}
+{{define "main"}}
+{{with .Stranger}}
+<center><img src='./test/test.jpeg' width='500' height='500'></center>
+<table>
+    <tr>
+        <th>Name</th>
+        <td>{{.Name}}</td>
+    </tr>
+    <tr>
+        <th>Place & Year</th>
+        <td>{{.Place2}}   || {{.Place1}}</td>
+    </tr>
+    <tr>
+        <th>Branch</th>
+        <td>{{.Branch}}</td>
+    </tr>
+    <tr>
+        <th>DOB</th>
+        <td>{{.Dob}}</td>
+    </tr>
+</table>
+{{end }}
+{{end}}
