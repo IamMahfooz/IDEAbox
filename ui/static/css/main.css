@@ -313,3 +313,8 @@ footer {
     color: #6A6C6F;
     text-align: center;
 }
+.borderexample {
+    border-width:3px;
+    border-style:solid;
+    border-color:#FF0000;
+}

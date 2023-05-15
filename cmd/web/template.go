@@ -17,6 +17,7 @@ type templateData struct {
 	Flash           string
 	IsAuthenticated bool
 	Stranger        *models.Stranger
+	Count           int
 }
 
 func humanDate(t time.Time) string {

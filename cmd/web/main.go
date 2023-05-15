@@ -40,15 +40,17 @@ type application struct {
 	rec        recognizer.Recognizer
 	studentMap map[string]map[string]interface{}
 	name       string
+	count      int
 }
 
 func main() {
 	rec := recognizer.Recognizer{}
 	studentMap := make(map[string]map[string]interface{})
+	count := 0
 
 	addr := flag.String("addr", ":4000", "HTTP network address")
 	flag.Parse()
-	dsn := flag.String("dsn", "web:mahfooz@/snippetbox?parseTime=true", "MySQL data source name")
+	dsn := flag.String("dsn", "web:mahfooz@/ideabox?parseTime=true", "MySQL data source name")
 	secret := flag.String("secret", "s6Ndh+pPbnzHbS*+9Pk8qGWhTzbpa@ge", "Secret key")
 	flag.Parse()
 	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
@@ -78,6 +80,7 @@ func main() {
 		users:         &mysql.UserModel{DB: db},
 		rec:           rec,
 		studentMap:    studentMap,
+		count:         count,
 	}
 	app.dataTrain()
 	app.jsonToMap()

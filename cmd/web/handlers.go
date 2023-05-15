@@ -162,6 +162,6 @@ func (app *application) about(w http.ResponseWriter, r *http.Request) {
 }
 func (app *application) faceism(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(app.session.Get(r, "authenticatedUserName"))
-	app.render(w, r, "upload.page.tmpl", &templateData{})
+	app.render(w, r, "upload.page.tmpl", &templateData{Count: app.count})
 
 }

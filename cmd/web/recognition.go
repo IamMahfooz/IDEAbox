@@ -17,6 +17,7 @@ const dataDir = "models"
 const testDir = "test"
 
 func (app *application) recognition(w http.ResponseWriter, r *http.Request) {
+	app.count = app.count + 1
 	//file uploading part starts here
 	r.ParseMultipartForm(10 << 20)
 	file, _, err := r.FormFile("myFile")
@@ -44,23 +45,24 @@ func (app *application) recognition(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("photo might contain multiple faces or face may not be in database !!"))
 		return
 	}
-	var dob, name, place1, place2, branch string
+	var dob, name, year, place2, branch string
 	for _, face := range faces {
 		id := face.Id
 		id = id[:8]
 		fmt.Println(id)
 		if student, ok := app.studentMap[strings.ToUpper(id)]; ok {
 			dob = student["dob"].(string)
+			dob = dob[3:6]
 			name = student["stu_name"].(string)
 			branch = student["dname"].(string)
-			place1 = id[:4]
+			year = id[:4]
 			place2 = student["line2"].(string)
 		} else {
 			fmt.Println(ok)
 		}
 		mod := &models.Stranger{
 			Name:   name,
-			Place1: place1,
+			Year:   year,
 			Place2: place2,
 			Branch: branch,
 			Dob:    dob,

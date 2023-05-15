@@ -29,7 +29,7 @@ type User struct {
 }
 type Stranger struct {
 	Name   string
-	Place1 string
+	Year   string
 	Place2 string
 	Branch string
 	Dob    string

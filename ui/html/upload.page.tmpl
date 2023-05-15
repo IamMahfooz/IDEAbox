@@ -1,7 +1,7 @@
 {{template "base" .}}
 {{define "title"}}Upload{{end}}
 {{define "main"}}
-Only .JPEG format supported
+Only .JPEG format supported || Trial counts : <strong>{{.Count}}</strong>
 <form enctype='multipart/form-data' action='/recognition' method='POST' novalidate>
     <input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
     <input type='file' name='myFile' />
